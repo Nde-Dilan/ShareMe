@@ -9,12 +9,7 @@ const GoogleLoginBtn = () => {
     <button
     type='button'
     className='bg-mainColor flex justify-center items-center p-3 rounded-lg cursor-pointer outline-none'
-    onClick={()=>{
-      const isLogin = signIn()
-    if(isLogin){
-      router.push('/');
-    }
-    }}
+    onClick={signIn}
     >
       <FcGoogle/> {` `}
       Sign in with Google

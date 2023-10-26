@@ -1,11 +1,19 @@
 import NextAuth from "next-auth/next";
 import Google from 'next-auth/providers/google';
 import {client } from '@src/client';
+
+
+
 const config = {
     providers : [
         Google({ clientId: process.env.AUTH_GOOGLE_ID, clientSecret: process.env.AUTH_GOOGLE_SECRET }),
     ],
     callbacks:{
+        async session ({session}){
+            //   console.log("Info about the session ");
+            //   console.log(session);
+              return session;
+            },
 
         async signIn ({profile}){
           
@@ -28,21 +36,15 @@ const config = {
                  client.createIfNotExists(doc)
                  .then(()=>{
                     return true;
-                 }
+                }
 
                  )
-                 console.log("profile");
+                 return true;
             } catch (error) {
                 console.log(error);
             }
 
             return true;
-        },
-
-        async session ({session}){
-          console.log("Info about the session ");
-          console.log(session);
-          return session;
         }
     }
 }
