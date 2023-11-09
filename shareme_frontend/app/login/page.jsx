@@ -17,15 +17,9 @@ const LoginPage = () => {
 
   return (
     <div className="">
-      
-      {session?.user ?
-        (
-          router.push('/home')
-        )
-        :
-      (
+
         <Login/>
-      )}
+      
     </div>
     
   )

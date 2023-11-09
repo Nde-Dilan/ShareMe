@@ -1,11 +1,11 @@
-import { Feed } from "@components";
+import { NavBar, Search } from "@components";
 import Home from "@container/Home";
-import React from "react";
 
 const page = () => {
   return (
-    <div>
-      <Home />
+    <div className="">
+      <NavBar/>
+      {/* <Home /> */}
     </div>
   );
 };

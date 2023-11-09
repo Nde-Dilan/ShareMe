@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link";
 import Image from "next/image";
 import { RiHomeFill } from "react-icons/ri";
@@ -47,7 +49,7 @@ const SideBar = ({ user, closeToggle }) => {
 
   const handleCloseSideBar = (e,path=null) => {
     e.preventDefault();
-    path && router.push('/category/'+path) ;
+    path &&( path ==="home" ? router.push("/"+path) : router.push('/category/'+path));
     if (closeToggle) closeToggle(false);
   };
   return (
@@ -70,13 +72,22 @@ const SideBar = ({ user, closeToggle }) => {
           {/* <nav className={({isActive })=> isActive ? isActiveStyle : isNotActiveStyle}>
 
           </nav> */}
-          <nav
-            onClick={handleCloseSideBar}
-            className="flex items-center gap-3 text-gray-500 hover:text-black transition-all duration-200 ease-in-out capitalize cursor-pointer"
+          <Link
+            
+            href={`/home`}
+            onClick={(e)=>handleCloseSideBar(e,'home')}
+            className={
+              pathname.includes('/home')
+                ? isActiveStyle
+                : isNotActiveStyle
+            }
+            key="Home"
           >
             <RiHomeFill />
             Home
-          </nav>
+          </Link>
+            
+          
           <h3 className="mt-2 px-5 text-base 2xl:text-xl">
             Discover Categories
           </h3>

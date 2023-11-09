@@ -4,13 +4,14 @@ import { useSession } from "next-auth/react";
 import { useState, useEffect, useRef } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { HiMenu } from "react-icons/hi";
-import { SideBar, UserProfile } from "@components";
+import { Search, SideBar } from "@components";
 import { client, getUser } from "@src/client";
 import Pins from "./Pins";
 import Link from "next/link";
 import Image from "next/image";
 
 import { useRouter, usePathname } from "next/navigation";
+import UserProfile from "@components/UserProfile";
 const Home = () => {
   const { data: session } = useSession();
   const router = useRouter();
@@ -87,7 +88,7 @@ const Home = () => {
         )}
       </div>
       <div className="pb-2 flex-1 h-screen overflow-y-scroll" ref={scrollRef}>
-        {pathName.includes("/user-profile") ? <UserProfile /> : <Pins />}
+        {pathName.includes("/user-profile") ? <UserProfile /> : <Pins user={user && user} />}
       </div>
     </div>
   );

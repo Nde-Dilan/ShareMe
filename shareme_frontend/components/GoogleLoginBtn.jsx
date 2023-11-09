@@ -9,7 +9,7 @@ const GoogleLoginBtn = () => {
     <button
     type='button'
     className='bg-mainColor flex justify-center items-center p-3 rounded-lg cursor-pointer outline-none'
-    onClick={signIn}
+    onClick={()=>{signIn('google', { callbackUrl: 'http://localhost:3000/home' })}}
     >
       <FcGoogle/> {` `}
       Sign in with Google

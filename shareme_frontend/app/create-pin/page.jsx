@@ -1,9 +1,8 @@
-import React from 'react'
 
 const CreatePin = () => {
   return (
-    <div>CreatePin</div>
-  )
+        <h1>CreatePin</h1>
+    )
 }
 
 export default CreatePin;
